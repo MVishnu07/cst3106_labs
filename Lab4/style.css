@@ -3,9 +3,9 @@ header {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0;
     padding: 40px 0;
-    color: #f7f6f6; 
+    color: #ffffff; 
     text-align: left;
-    background: linear-gradient(#003f88, #00509d);
+    background: linear-gradient(#003f88, #015bb0);
 }
 
 body {
@@ -15,6 +15,7 @@ body {
     background-color: #e7e2e2;
 }
 
+/* Creating a container class that holds the content and has some visual effects in it like the box-shadow.*/
 .container {
     max-width: 800px;
     margin: 20px auto;
@@ -23,11 +24,12 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+/* Creating a column class that creates 2 columns in the layout with the specific width and gap.*/
 .column {
     float: left;
     height: max-content;
     width: 48.5%;
-    background-color: #f2e6e6; 
     padding: 10px;     
     align-self: center;
     gap: 10%;
@@ -43,9 +45,10 @@ So, what the "clear: both;" property does is ensure that this invisible box we c
 }
 
 .footer {
-    background-color: #00509d; /* Background color for the footer */
-    color: white; /* Text color for the footer */
+    background-color: #00509d; 
+    color: white; 
     text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 10px;
 }
 
@@ -59,29 +62,34 @@ img {
     margin: 4px;
 
 }
+
 a {
     color:white;
 }
 
+/* Creating a navigation bar with yellow background color.*/
 .topnav {
     overflow: auto;
     background-color:  #e8b707;
 }
 
+/* Using float = left, we are aligning the text in the navigation bar to the left of the bar horizontally next to each other.*/
 .topnav a {
     float: left;
-    color: #f2f2f2;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     font-size: 17px;
 }
 
+/* Setting the background color to white and text color to black when the mouse pointer hovers on an element in the navigation bar.*/
 .topnav a:hover {
-    background-color: #ddd;
+    background-color: #ffffff;
     color: black;
 }
 
+/* Setting the background color to blue and text color to white to the elemnent selected in the navigation bar.*/
 .topnav a.active {
-    background-color: #00509d;
+    background-color: #015bb0;
     color: white;
 }
