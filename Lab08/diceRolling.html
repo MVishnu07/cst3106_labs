@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Rolling</title>
+    <link rel="stylesheet" href="style.css" type="text/css"> 
+   
+</head>
+<body>
+    <header>Dice Rolling Animation</header>
+    <div id="diceContainer">
+        <div class="die" data-value="1"></div>
+        <div class="die" data-value="1"></div>
+        <div class="die" data-value="1"></div>
+        <div class="die" data-value="1"></div>
+        <div class="die" data-value="1"></div>
+    </div>
+    <div class="points">Total points: <span id="total"></span></div>
+
+    <button id="rollDiceButton">Roll Dice</button>
+    <!-- jQuery included for DOM manipulation -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Script for handling dice roll and total points calculation -->
+    <script>
+        $(document).ready(function() {
+            // Initialize each die with a dot in the center (value 1)
+            $('.die').each(function() {
+                $(this).attr('data-value', 1).html('<div class="dot" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>');
+            });
+             // Toggle the 'selected' class to highlight dice when clicked
+            $('.die').on('click', function() {
+                $(this).toggleClass('selected');
+            });
+            // When the roll dice button is clicked
+            $('#rollDiceButton').on('click', function() {
+                // Roll each die that is not selected
+                $('.die').not('.selected').each(function() {
+                    rollDie($(this));
+                });
+                // Update the total points
+                calculateTotal();
+            });
+        });
+        // Function to roll a die
+        function rollDie(die) {
+            // Generate a random value for the die
+            let diceValue = Math.floor(Math.random() * 6) + 1;
+            // Generate a random rotation for the die
+            let rotationValue = (Math.floor(Math.random() * 360) + 1) + "deg";
+
+            // Set the value and apply the rotation
+            die.attr('data-value', diceValue);
+            die.css('transform', 'rotate(' + rotationValue + ')');
+            // Remove existing dots and add new ones based on the dice value
+            die.find('.dot').remove();
+
+            // The switch statement adds dots to the die to represent the value
+            switch(diceValue) {
+                case 1:
+                    die.append('<div class="dot" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>');
+                    break;
+                case 2:
+                    die.append('<div class="dot" style="top: 25%; left: 25%;"></div>');
+                    die.append('<div class="dot" style="bottom: 25%; right: 25%;"></div>');
+                    break;
+                case 3:
+                    die.append('<div class="dot" style="top: 25%; left: 25%;"></div>');
+                    die.append('<div class="dot" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>');
+                    die.append('<div class="dot" style="bottom: 25%; right: 25%;"></div>');
+                    break;
+                case 4:
+                    die.append('<div class="dot" style="top: 25%; left: 25%;"></div>');
+                    die.append('<div class="dot" style="top: 25%; right: 25%;"></div>');
+                    die.append('<div class="dot" style="bottom: 25%; left: 25%;"></div>');
+                    die.append('<div class="dot" style="bottom: 25%; right: 25%;"></div>');
+                    break;
+                case 5:
+                    die.append('<div class="dot" style="top: 25%; left: 25%;"></div>');
+                    die.append('<div class="dot" style="top: 25%; right: 25%;"></div>');
+                    die.append('<div class="dot" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>');
+                    die.append('<div class="dot" style="bottom: 25%; left: 25%;"></div>');
+                    die.append('<div class="dot" style="bottom: 25%; right: 25%;"></div>');
+                    break;
+                case 6:
+                    die.append('<div class="dot" style="top: 25%; left: 25%;"></div>');
+                    die.append('<div class="dot" style="top: 25%; right: 25%;"></div>');
+                    die.append('<div class="dot" style="top: 50%; left: 25%; transform: translate(0, -50%);"></div>');
+                    die.append('<div class="dot" style="top: 50%; right: 25%; transform: translate(0, -50%);"></div>');
+                    die.append('<div class="dot" style="bottom: 25%; left: 25%;"></div>');
+                    die.append('<div class="dot" style="bottom: 25%; right: 25%;"></div>');
+                    break;
+            }
+        }
+        // Function to calculate the total points of rolled dice
+        function calculateTotal() {
+            var total = 0;
+             // Iterate over each element with the class 'die'
+            $('.die').each(function() {
+                // Add the value of this die to the total sum
+                total += parseInt($(this).attr('data-value'));
+            });
+            // Update the text of the HTML element with id 'total' with the calculated total sum.
+            $('#total').text(total);
+        }
+
+    </script>
+
+</body>
+</html>
