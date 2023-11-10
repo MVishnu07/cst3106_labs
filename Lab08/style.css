@@ -1,0 +1,61 @@
+/* General body styling; using flexbox to center content vertically */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+/* Custom font face for headers */
+@font-face {
+    font-family: myFirstFont;
+    src: url(MinecraftTen-VGORe.ttf);
+}
+/* Header styling using the custom font */
+header {
+    font-family: myFirstFont;
+    color: black;
+}
+/* Flex container for dice to layout horizontally */
+#diceContainer {
+    display: flex;
+    gap: 45px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px; 
+}
+/* Styling for each die, including the transition for the rotate effect */
+.die {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    position: relative;
+    transition: transform 0.3s;
+}
+/* Dot styling for the dice faces */
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+}
+/* Roll dice button styling */
+#rollDiceButton {
+    margin-top: 20px; 
+    width: 80px;
+    height: 50px;
+}
+/* Points display styling */
+.points {
+    margin-top: 20px;
+    padding-top: 10px; 
+}
+/* Highlight selected dice */
+.selected {
+    background-color: yellow;
+}
